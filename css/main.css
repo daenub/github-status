@@ -1,0 +1,161 @@
+@import "./colors.css";
+@import "./fonts.css";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--oc-gray-9);
+  color: var(--oc-gray-0);
+
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 32rem) minmax(1rem, 1fr);
+  grid-template-areas:
+    ". header ."
+    ". content .";
+}
+
+.header {
+  grid-area: header;
+}
+
+.title {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.messages {
+  grid-area: content;
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: end;
+}
+
+@keyframes message-fade-in {
+  from {
+    transform: translate(0, 1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--oc-blue-7);
+  margin-bottom: 1rem;
+  max-width: 75%;
+  animation: message-fade-in 0.5s ease-in-out;
+}
+
+.message[hidden] {
+  display: none;
+}
+
+.message a {
+  color: inherit;
+}
+
+.message--response {
+  background-color: var(--oc-gray-7);
+  justify-self: start;
+}
+
+.message--typing {
+  background-color: var(--oc-gray-7);
+  justify-self: start;
+
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@keyframes typing {
+  from {
+    background-color: var(--oc-gray-2);
+    transform: scale(1);
+  }
+  to {
+    background-color: var(--oc-gray-6);
+    transform: scale(0.8);
+  }
+}
+
+.typing-bubble {
+  width: 0.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--oc-gray-2);
+  animation: 0.7s linear typing alternate-reverse infinite;
+}
+
+.typing-bubble:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-bubble:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.message--audio {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.message__audio-indicator {
+  width: 6rem;
+  height: 2rem;
+  stroke: var(--oc-blue-0);
+  stroke-linecap: round;
+}
+
+.message__play {
+  --_size: 2rem;
+  display: block;
+  border: none;
+  cursor: pointer;
+
+  width: var(--_size);
+  aspect-ratio: 1;
+  background-color: rgba(var(--oc-blue-0-rgb), 0.3);
+  border-radius: 50%;
+
+  margin-right: 1rem;
+  position: relative;
+}
+
+.message__play::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: block;
+  border-width: calc(var(--_size) * 0.25) 0 calc(var(--_size) * 0.25)
+    calc(var(--_size) * 0.4);
+  border-style: solid;
+  border-color: transparent;
+  border-left-color: var(--oc-blue-0);
+
+  border-right: none;
+}
+
+.message__timestamp {
+}

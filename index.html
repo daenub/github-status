@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/main.js" type="module" defer></script>
+    <title>GitHub Status</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">GitHub Status</h1>
+    </header>
+    <ul class="messages">
+      <li class="message" data-message="initial" hidden>
+        Chan wieder mal nöd uf GitHub pushe…
+      </li>
+      <li
+        class="message message--response"
+        data-message="initial-response"
+        hidden
+      >
+        Hmm… komisch 🤔 ich luege grad schnell nah..
+      </li>
+      <li
+        class="message message--response"
+        data-message="indicator-none"
+        hidden
+      >
+        🟢
+        <a href="https://www.githubstatus.com/" target="_blank"
+          >GitHub het keis Problem im Moment</a
+        >. Es muss a irgendöppis anderem ligge.
+      </li>
+      <li
+        class="message message--response"
+        data-message="indicator-minor"
+        hidden
+      >
+        🟡
+        <a href="https://www.githubstatus.com/" target="_blank"
+          >Irgendöppis Chlises lauft bi GitHub grad nöd guet.</a
+        >
+      </li>
+      <li
+        class="message message--response"
+        data-message="indicator-major"
+        hidden
+      >
+        🔴
+        <a href="https://www.githubstatus.com/" target="_blank"
+          >Öppis Gröbers lauft bi GitHub nöd.</a
+        >
+      </li>
+      <li
+        class="message message--response"
+        data-message="indicator-critical"
+        hidden
+      >
+        🚨
+        <a href="https://www.githubstatus.com/" target="_blank"
+          >Bi GitHub isch öpper grad zünftig am schwitze.</a
+        >
+      </li>
+      <li class="message message--response" data-message="error" hidden>
+        🤨 GitHub wett mer nöd säge was los isch.
+        <a href="https://www.githubstatus.com/" target="_blank"
+          >Musch halt sälber schnell luege was lauft.</a
+        >
+      </li>
+      <li
+        class="message message--audio"
+        data-player
+        data-message="audio"
+        hidden
+      >
+        <audio src="./assets/problem.mp3"></audio>
+        <button class="message__play"></button>
+        <svg
+          viewBox="0 0 600 200"
+          class="message__audio-indicator"
+          data-audio-visual
+        ></svg>
+      </li>
+      <li class="message message--typing" data-message="typing" hidden>
+        <div class="typing-bubble"></div>
+        <div class="typing-bubble"></div>
+        <div class="typing-bubble"></div>
+      </li>
+    </ul>
+  </body>
+</html>
